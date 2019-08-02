@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  minecraft-server:
+    ports:
+      - "51144:25565"
+      # - "25575"
+      # - "19132-19133/udp"
+
+    environment:
+      EULA: "TRUE"
+      VERSION: "1.14.4"
+
+    image: itzg/minecraft-server
+
+    container_name: mc
+
+    volumes:
+      - type: bind
+        source: "/host_mnt/c/Users/admin/AppData/Roaming/.minecraft/saves/Dads and Calvin Anvil #1"
+        target: /data/world
+      - type: bind
+        source: "./data"
+        target: /data
+
+    tty: true
+    stdin_open: true
+    restart: always
